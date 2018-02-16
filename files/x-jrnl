@@ -1,0 +1,3 @@
+#!/bin/bash
+
+urxvt -title "Jrnl" -icon "$HOME/.local/share/icons/jrnl.png" -e tmuxinator start jrnl

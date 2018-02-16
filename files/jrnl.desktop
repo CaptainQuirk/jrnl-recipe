@@ -1,0 +1,9 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=Jrnl
+Comment=Terminal wrapper around jrnlsh
+Path=/home/leonard/Documents/configuration/src/.jrnl
+Exec=x-jrnl
+Icon=/home/leonard/.local/share/icons/jrnl.png

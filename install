@@ -1,0 +1,26 @@
+#!/bin/bash
+
+CONFIG_SRC_DIR=$HOME/Documents/configuration/src
+JRNL_RECIPE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+pip3 install jrnl
+
+if [ ! -d "$CONFIG_SRC_DIR/.jrnl" ]; then
+    echo "no jrnl config"
+    git clone https://CaptainQuirk@bitbucket.org/CaptainQuirk/.jrnl.git "$CONFIG_SRC_DIR/.jrnl"
+    ln -s -f "$CONFIG_SRC_DIR/.jrnl/jrnls/tech.txt" "$HOME/.jrnl_tech.txt"
+fi
+
+cd "$CONFIG_SRC_DIR/.jrnl" || exit 1
+git pull
+cd - || exit 2
+
+VARS='$HOME'
+envsubst "$VARS" < "$CONFIG_SRC_DIR/.jrnl/jrnl-config.default" > "$HOME/.config/jrnl"
+
+sudo cp --update "$JRNL_RECIPE_DIR/files/x-jrnl" /usr/local/bin
+
+cp --update "$JRNL_RECIPE_DIR/files/jrnl.yml" "$HOME/.config/tmuxinator/jrnl.yml"
+cp --update "$JRNL_RECIPE_DIR/files/jrnl.desktop" "$HOME/.local/share/applications"
+ln -s -f "$HOME/.local/share/applications/jrnl.desktop" /home/leonard/.config/autostart/jrnl.desktop
+cp --update "$JRNL_RECIPE_DIR/files/jrnl.png" "$HOME/.local/share/icons"
