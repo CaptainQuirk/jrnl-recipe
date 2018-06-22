@@ -22,5 +22,4 @@ sudo cp --update "$JRNL_RECIPE_DIR/files/x-jrnl" /usr/local/bin
 
 cp --update "$JRNL_RECIPE_DIR/files/jrnl.yml" "$HOME/.config/tmuxinator/jrnl.yml"
 cp --update "$JRNL_RECIPE_DIR/files/jrnl.desktop" "$HOME/.local/share/applications"
-ln -s -f "$HOME/.local/share/applications/jrnl.desktop" /home/leonard/.config/autostart/jrnl.desktop
 cp --update "$JRNL_RECIPE_DIR/files/jrnl.png" "$HOME/.local/share/icons"
