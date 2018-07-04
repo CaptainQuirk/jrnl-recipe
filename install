@@ -15,6 +15,7 @@ cd "$CONFIG_SRC_DIR/.jrnl" || exit 1
 git pull
 cd - || exit 2
 
+# shellcheck disable=SC2016
 VARS='$HOME'
 envsubst "$VARS" < "$CONFIG_SRC_DIR/.jrnl/jrnl-config.default" > "$HOME/.config/jrnl"
 
