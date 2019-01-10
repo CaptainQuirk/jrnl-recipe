@@ -1,0 +1,49 @@
+pip jrnl
+
+git "Retrieving jrnl configuration"; do
+    repository "https://CaptainQuirk@bitbucket.org/CaptainQuirk/.jrnl.git"
+    destination "$CONFIG_SRC_DIR/.jrnl"
+done
+
+link "Symlinking jrnl configuration file"; do
+    target "$CONFIG_SRC_DIR/.jrnl/jrnls/tech.txt"
+    to "$HOME/.jrnl_tech.txt"
+    force true
+done
+
+file "Copying X executable"; do
+    source "$RECIPE_DIR/files/x-jrnl"
+    path "/usr/local/bin/x-jrnl"
+    sudo true
+    update true
+done
+
+template "Compiling jrnl configuration"; do
+    source "$CONFIG_SRC_DIR/.jrnl/jrnl-config.default"
+    target "$HOME/.config/jrnl"
+    variables bou
+done
+
+directory "Creating tmuxinator base directory"; do
+    path "$HOME/.config/tmuxinator/"
+done
+
+file "Copying tmuxinator config file"; do
+    source "$RECIPE_DIR/files/jrnl.yml"
+    path "$HOME/.config/tmuxinator/jrnl.yml"
+    update true
+done
+
+file "Copying desktop configuration file"; do
+    source "$RECIPE_DIR/files/jrnl.desktop"
+    path "$HOME/.local/share/applications/jrnl.desktop"
+    update true
+done
+
+file "Copying icon file"; do
+    source "$RECIPE_DIR/files/jrnl.png"
+    path "$HOME/.local/share/icons/jrnl.png"
+    update true
+done
+
+
