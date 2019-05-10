@@ -1,3 +1,4 @@
+pip secretstorage
 brew jrnl
 
 git "Retrieving jrnl configuration"; do
