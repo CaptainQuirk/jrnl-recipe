@@ -1,4 +1,4 @@
-pip jrnl
+brew jrnl
 
 git "Retrieving jrnl configuration"; do
     repository "https://CaptainQuirk@bitbucket.org/CaptainQuirk/.jrnl.git"
